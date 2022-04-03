@@ -1,9 +1,14 @@
 # MTRACE
 
+MTRACE is a tool to assist with memory tracing.
+
 ## Building
 
 ### Pintool
 
+First, download Intel's pin kit from https://www.intel.com/content/www/us/en/developer/articles/tool/pin-a-dynamic-binary-instrumentation-tool.html.
+
+After unpacking it within the `pin` folder, begin compilation of the pintool:
 ```bash
 MTRACE_DIR=pin/source/tools/mtrace
 mkdir $MTRACE_DIR
@@ -12,10 +17,13 @@ cd $MTRACE_DIR
 make
 ```
 
+Note that building this pintool on Linux, like other pintools, will link statically with libelf and libdwarf, which have LGPL licenses. You are responsible for following the appropriate licenses if you redistribute said tool.
+
 ### Golang
 
-Download and install Golang.
+As a pre-req, download and install Golang.
 
+Then:
 ```
 go get github.com/dgryski/go-metro github.com/dgryski/go-minhash github.com/dgryski/go-spooky
 go build minhash.go
